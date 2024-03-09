@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Flights xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <model_>none</model_>
+  <countOfSeat>0</countOfSeat>
+  <yearOfIssue />
+  <carrying>0</carrying>
+  <DateOfService />
+  <typePlane>none</typePlane>
+  <crewMe />
+  <ID>0</ID>
+</Flights>pePlane>Пассажирский</typePlane>
+  <crewMe>
+    <CrewMember>
+      <name>43fgg</name>
+      <age>65</age>
+      <yearExp>54</yearExp>
+      <position>Стюардеса </position>
+    </CrewMember>
+  </crewMe>
+</Flights>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Flights xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <ID>12</ID>
+  <model_>none</model_>
+  <countOfSeat>1212</countOfSeat>
+  <yearOfIssue>7.2.2024</yearOfIssue>
+  <carrying>1212</carrying>
+  <DateOfService>7.2.2024</DateOfService>
+  <typePlane>Пассажирский</typePlane>
+  <crewMe>
+    <CrewMember>
+      <name>GHbdtn</name>
+      <age>11111</age>
+      <yearExp>1111</yearExp>
+      <position>Стюардеса </position>
+    </CrewMember>
+  </crewMe>
+</Flights>
