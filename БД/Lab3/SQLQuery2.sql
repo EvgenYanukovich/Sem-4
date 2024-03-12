@@ -1,17 +1,17 @@
 USE master;
 
 CREATE database YAN_MyBase on primary
-(name = 'YAN_MyBase_mdf', filename = 'D:\Education\Семестр 4\БД\Lab3\YAN_MyBase_mdf.mdf',
+(name = 'YAN_MyBase_mdf', filename = 'D:\studing\4_semestr\BD\YAN_MyBase_mdf.mdf',
 size = 10240Kb,maxsize=UNLIMITED, filegrowth=1024Kb),
-( name = 'YAN_MyBase_ndf', filename = 'D:\Education\Семестр 4\БД\Lab3\YAN_MyBase_ndf.ndf', 
+( name = 'YAN_MyBase_ndf', filename = 'D:\studing\4_semestr\BD\YAN_MyBase_ndf.ndf', 
    size = 10240KB, maxsize=1Gb, filegrowth=25%),
 filegroup FG
-( name = 'YAN_MyBase_fg1_1', filename = 'D:\Education\Семестр 4\БД\Lab3\YAN_MyBase_fg1_1.ndf', 
+( name = 'YAN_MyBase_fg1_1', filename = 'D:\studing\4_semestr\BD\YAN_MyBase_fg1_1.ndf', 
    size = 10240Kb, maxsize=1Gb, filegrowth=25%),
-( name = 'YAN_MyBase_fg1_2', filename = 'D:\Education\Семестр 4\БД\Lab3\YAN_MyBase_fg1_2.ndf', 
+( name = 'YAN_MyBase_fg1_2', filename = 'D:\studing\4_semestr\BD\YAN_MyBase_fg1_2.ndf', 
    size = 10240Kb, maxsize=1Gb, filegrowth=25%)
 log on
-( name = 'YAN_MyBase_log', filename='D:\Education\Семестр 4\БД\Lab3\YAN_MyBase_log.ldf',       
+( name = 'YAN_MyBase_log', filename='D:\studing\4_semestr\BD\YAN_MyBase_log.ldf',       
    size=10240Kb,  maxsize=2048Gb, filegrowth=10%)
 
 USE YAN_MyBase;
