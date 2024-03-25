@@ -2,16 +2,16 @@
 
 let number = [1, 2, 3];
 
-let [first] = number;
+let [first, , s] = number;
 
-console.log(first);
+console.log(first, s);
 
 
 
 //Задание 2
 
 let user = {
-    name: 'Daniil',
+    name: 'Evgeniy',
     age: '18'
 };
 
@@ -20,7 +20,7 @@ let admin = {
     ...user
 };
 
-let {name : n, age} = user;
+let { name: n, age } = user;
 
 console.log(admin);
 
@@ -95,13 +95,13 @@ let {
     }
 } = store;
 
-for(let elem of posts){
+for (let elem of posts) {
     console.log(elem.likesCount);
 }
 
 console.log(dialogs = dialogs.filter(elem => elem.id % 2 == 0));
 
-for(let i = 0; i < messages.length; i++){
+for (let i = 0; i < messages.length; i++) {
     messages[i].message = "Hello world";
 }
 
@@ -131,14 +131,8 @@ console.log(tasks);
 
 let arr = [1, 2, 3];
 
-function Sum(a, b, c){
+function Sum(a, b, c) {
     return a + b + c;
 }
 
 console.log(Sum(...arr))
-
-arr = [1, 2, 3]
-
-arr.splice(1, )
-
-console.log(arr);
