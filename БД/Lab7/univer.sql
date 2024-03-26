@@ -2,7 +2,7 @@ USE UNIVER;
 
 --1
 go
-CREATE VIEW Преподаватель AS 
+CREATE or ALTER VIEW Преподаватель AS 
 SELECT TEACHER AS код, 
        TEACHER_NAME AS имя_преподавателя, 
        GENDER AS пол, 
@@ -11,7 +11,7 @@ FROM TEACHER;
 
 --2
 go
-CREATE VIEW Количество_кафедр AS
+CREATE or ALTER VIEW Количество_кафедр AS
 SELECT F.FACULTY AS факультет, COUNT(P.PULPIT) AS количество_кафедр
 FROM FACULTY F
 JOIN PULPIT P ON F.FACULTY = P.FACULTY
@@ -19,23 +19,26 @@ GROUP BY F.FACULTY;
 
 --3
 go
-CREATE VIEW Аудитории AS
+CREATE or ALTER VIEW Аудитории AS
 SELECT AUDITORIUM AS код, 
        AUDITORIUM_NAME AS наименование_аудитории
-FROM AUDITORIUM
-WHERE AUDITORIUM_TYPE LIKE 'ЛК%';
+FROM AUDITORIUM;
 
 --4
 go
-CREATE VIEW Лекционные_аудитории AS
+CREATE or ALTER VIEW Лекционные_аудитории AS
 SELECT AUDITORIUM AS код, 
-       AUDITORIUM_NAME AS наименование_аудитории
+       AUDITORIUM_NAME AS наименование_аудитории,
+	   AUDITORIUM_TYPE AS тип_аудитории
 FROM AUDITORIUM
-WHERE AUDITORIUM_TYPE LIKE 'ЛК%';
+WHERE AUDITORIUM_TYPE LIKE 'ЛК%' WITH CHECK OPTION;
 
+--go
+--INSERT Лекционные_аудитории values('203-2', '203-2', 'ЛЗ');
+--Закомменченное выдаст ошибку, т.к. не соответствует условию из with check option
 --5
 go
-CREATE VIEW Дисциплины AS
+CREATE or ALTER VIEW Дисциплины AS
 SELECT TOP 100 PERCENT SUBJECT AS код, 
        SUBJECT_NAME AS наименование_дисциплины, 
        PULPIT AS код_кафедры

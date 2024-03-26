@@ -2,7 +2,7 @@ USE YAN_MyBase;
 
 --1
 go
-CREATE VIEW Работник AS 
+CREATE or ALTER VIEW Работник AS 
 SELECT WorkerID AS код, 
        Фамилия, 
        Имя, 
@@ -14,14 +14,14 @@ FROM Работники;
 
 --2
 go
-CREATE VIEW Количество_работ AS
+CREATE or ALTER VIEW Количество_работ AS
 SELECT WorkerID AS работник, COUNT(OperationID) AS количество_работ
 FROM Выполненная_работа
 GROUP BY WorkerID;
 
 --3
 go
-CREATE VIEW Сложные_операции AS
+CREATE or ALTER VIEW Сложные_операции AS
 SELECT OperationID AS код, 
        Наименование
 FROM Операции
@@ -29,7 +29,7 @@ WHERE Признак_сложности LIKE 'Сложная%';
 
 --4
 go
-CREATE VIEW Средние_операции AS
+CREATE or ALTER VIEW Средние_операции AS
 SELECT OperationID AS код, 
        Наименование
 FROM Операции
@@ -37,7 +37,7 @@ WHERE Признак_сложности LIKE 'Средняя%';
 
 --5
 go
-CREATE VIEW Операции_по_алфавиту AS
+CREATE or ALTER VIEW Операции_по_алфавиту AS
 SELECT TOP 100 PERCENT OperationID AS код, 
        Наименование, 
        Признак_сложности
