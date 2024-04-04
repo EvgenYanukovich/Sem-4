@@ -50,19 +50,14 @@ function Filter(minPrice, maxPrice, color, size) {
     let arrObjects = Object.keys(products['Обувь']).map(key => (products['Обувь'][key]));
 
     let newArrObjects = [];
-
     arrObjects.forEach(elem => {
         newArrObjects.push(...elem);
     });
 
-    arrObjects = newArrObjects.filter(key => (key['цена'] >= minPrice &&
-            key['цена'] <= maxPrice &&
-            key['размер'] == size &&
-            key['цвет'] == color)
-
-    );
-
-    return arrObjects.map(key => key['номер']);
+    return newArrObjects.filter(key => (key['цена'] >= minPrice &&
+        key['цена'] <= maxPrice &&
+        key['размер'] == size &&
+        key['цвет'] == color)).map(key => key['номер']);
 }
 
 console.log(Filter(800, 1200, 'черный', 41))
@@ -139,7 +134,7 @@ for (let category in newProducts['Обувь']) {
 
 console.log(newProducts['Обувь']['Ботинки'][0]['цена']);
 
-//Задание 5
+//Задание 5-6
 
 function Shoe(number, size, color, discount, cost) {
     this['номер'] = number;
@@ -152,7 +147,8 @@ function Shoe(number, size, color, discount, cost) {
         'цена': {
             get() {
                 return this['стоимость'] * (1 - this['скидка']);
-            }
+            },
+            configurable: false
         },
         'номер': {
             writable: false,
@@ -161,8 +157,6 @@ function Shoe(number, size, color, discount, cost) {
         }
     });
 }
-
-//Задание 6
 
 let allProducts = {
     "Обувь": {

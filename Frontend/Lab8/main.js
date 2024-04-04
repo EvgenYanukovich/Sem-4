@@ -226,7 +226,6 @@ let store = {
 };
 
 //Задание 1
-
 let userCopy = {
     ...user
 };
@@ -269,12 +268,11 @@ let user5Copy = {
     ...user5,
     studies: {
         ...user5.studies,
-        department: {
-            ...user5.studies.department
-        },
-        exams: [...user5.studies.exams.map(exam => ({
-            ...exam
-        }))]
+        department: {...user5.studies.department },
+        exams: [
+            {...user5.studies.exams[0] },
+            {...user5.studies.exams[1] }
+        ]
     }
 };
 console.log(user5Copy);
@@ -283,15 +281,16 @@ let user6Copy = {
     ...user6,
     studies: {
         ...user6.studies,
-        department: {
-            ...user6.studies.department
-        },
-        exams: [...user6.studies.exams.map(exam => ({
-            ...exam,
-            professor: {
-                ...exam.professor
+        department: {...user6.studies.department },
+        exams: [{
+                ...user6.studies.exams[0],
+                professor: {...user6.studies.exams[0].professor }
+            },
+            {
+                ...user6.studies.exams[1],
+                professor: {...user6.studies.exams[1].professor }
             }
-        }))]
+        ]
     }
 };
 console.log(user6Copy);
@@ -300,44 +299,60 @@ let user7Copy = {
     ...user7,
     studies: {
         ...user7.studies,
-        department: {
-            ...user7.studies.department
-        },
-        exams: [...user7.studies.exams.map(exam => ({
-            ...exam,
-            professor: {
-                ...exam.professor,
-                articles: [...exam.professor.articles.map(article => ({
-                    ...article
-                }))]
+        department: {...user7.studies.department },
+        exams: [{
+                ...user7.studies.exams[0],
+                professor: {
+                    ...user7.studies.exams[0].professor,
+                    articles: [
+                        {...user7.studies.exams[0].professor.articles[0] },
+                        {...user7.studies.exams[0].professor.articles[1] },
+                        {...user7.studies.exams[0].professor.articles[2] }
+                    ]
+                }
+            },
+            {
+                ...user7.studies.exams[1],
+                professor: {
+                    ...user7.studies.exams[1].professor,
+                    articles: [
+                        {...user7.studies.exams[1].professor.articles[0] },
+                        {...user7.studies.exams[1].professor.articles[1] },
+                        {...user7.studies.exams[1].professor.articles[2] }
+                    ]
+                }
             }
-        }))]
+        ]
     }
 };
-
 console.log(user7Copy);
 
 let storeCopy = {
-    ...store,
     state: {
-        ...store.state,
         profilePage: {
-            ...store.state.profilePage,
-            posts: [...store.state.profilePage.posts.map(post => ({
-                ...post
-            }))],
+            posts: [
+                {...store.state.profilePage.posts[0] },
+                {...store.state.profilePage.posts[1] }
+            ],
+            newPostText: store.state.profilePage.newPostText
         },
         dialogsPage: {
-            ...store.state.dialogsPage,
-            dialogs: [...store.state.dialogsPage.dialogs.map(dialog => ({
-                ...dialog
-            }))],
-            messages: [...store.state.dialogsPage.messages.map(message => ({
-                ...message
-            }))]
-        }
+            dialogs: [
+                {...store.state.dialogsPage.dialogs[0] },
+                {...store.state.dialogsPage.dialogs[1] },
+                {...store.state.dialogsPage.dialogs[2] },
+                {...store.state.dialogsPage.dialogs[3] }
+            ],
+            messages: [
+                {...store.state.dialogsPage.messages[0] },
+                {...store.state.dialogsPage.messages[1] },
+                {...store.state.dialogsPage.messages[2] }
+            ]
+        },
+        sidebar: {...store.state.sidebar }
     }
-}
+};
+console.log(storeCopy);
 
 let storeFuncCopy = structuredClone(store);
 console.log(storeFuncCopy);
