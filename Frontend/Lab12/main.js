@@ -111,11 +111,12 @@ class Sudoku {
         }
         this.gameField[row][col] = val;
 
+
+        console.clear();
         if (this.isEndGame()) {
             console.log('Вы разгадали судоку. Напишите \'reset\' для перезаупка игры')
         }
 
-        console.clear();
         console.table(this.gameField);
         return true;
     }
@@ -142,11 +143,11 @@ console.table(sudoku.gameField);
 
 do {
     let [row, col, val] = prompt('Введите строку, столбец и значение через пробел', [0, 0, 0]).split(' ');
-    console.log(row, col, val);
-    sudoku.checkValue(row - 1, col - 1, +val);
     if (row === 'reset') {
         sudoku.resetGame();
+        continue;
     }
+    sudoku.checkValue(row - 1, col - 1, +val);
     flag = false;
     if (+val != 0) {
         flag = true;
