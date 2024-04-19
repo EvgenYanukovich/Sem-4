@@ -13,7 +13,6 @@ console.log(Volume(4)(2)(3));
 console.log(Volume(2)(9)(3));
 
 
-
 //ЗАДАНИЕ 3
 var a = 3;
 var b = "hello";

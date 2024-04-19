@@ -115,6 +115,7 @@ let user6 = {
     }
 };
 
+
 let user7 = {
     name: 'Masha',
     age: 20,
@@ -325,7 +326,11 @@ let user7Copy = {
         ]
     }
 };
-console.log(user7Copy);
+user7Copy.studies.exams[0].professor.articles[1].title = 'About PHP';
+
+console.log(user7.studies.exams[0].professor.articles[1].title)
+console.log(user7Copy.studies.exams[0].professor.articles[1].title);
+
 
 let storeCopy = {
     state: {

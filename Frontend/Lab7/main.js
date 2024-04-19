@@ -43,18 +43,13 @@ let products = {
         ]
     }
 };
-
+console.log(products['Обувь']['Ботинки'][0]);
 //Задание 2
 
 function Filter(minPrice, maxPrice, color, size) {
-    let arrObjects = Object.keys(products['Обувь']).map(key => (products['Обувь'][key]));
+    let arrObjects = Object.keys(products['Обувь']).flatMap(key => (products['Обувь'][key]));
 
-    let newArrObjects = [];
-    arrObjects.forEach(elem => {
-        newArrObjects.push(...elem);
-    });
-
-    return newArrObjects.filter(key => (key['цена'] >= minPrice &&
+    return arrObjects.filter(key => (key['цена'] >= minPrice &&
         key['цена'] <= maxPrice &&
         key['размер'] == size &&
         key['цвет'] == color)).map(key => key['номер']);

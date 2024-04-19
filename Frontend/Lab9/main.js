@@ -67,16 +67,16 @@ class Human {
     }
 }
 
-const person = new Human('Даниил', 'Гааг', 2005, 'Свердлова 13а');
+const person = new Human('Евгений', 'Янукович', 2004, 'Свердлова 13а');
 
 console.log('Возраст:', person.age);
 
 person.age = 20;
 console.log('Новый год рождения:', person.birthYear);
 
-console.log('Новый адрес:', person.address);
+console.log('Старый адрес:', person.address);
 person.changeAddress('Белорусская 21');
-console.log('Новая улица:', person.address);
+console.log('Новый адрес:', person.address);
 
 console.log('');
 
@@ -102,7 +102,7 @@ class Student extends Human {
     }
 }
 
-const student = new Student('Матвей', 'Головенко', 2005, 'Белорусская 21', 'ФИТ', 2, 10, '712013001');
+const student = new Student('Никита', 'Филон', 2005, 'Белорусская 21', 'ФИТ', 2, 10, '712013001');
 
 console.log('Фамилия и имя:', student.getFullName());
 console.log('Текущий курс:', student.course);
@@ -133,13 +133,13 @@ class Faculty {
     }
 
     addStudentToGroup(group, student) {
-        if(this.currentStudentCount == this.studentCount){
+        if (this.currentStudentCount == this.studentCount) {
             console.log('Лимит по студентам превышен!');
             return;
         }
 
         if (!this.groups[group]) {
-            if(this.currentGroupCount == this.groupCount){
+            if (this.currentGroupCount == this.groupCount) {
                 console.log('Лимит по группам превышен!');
                 return;
             }
@@ -174,8 +174,8 @@ class Faculty {
 
 const faculty = new Faculty('ФИТ', 10, 200);
 
-faculty.addStudentToGroup('10', { name: 'Даниил', recordBookNumber: '732013001' });
-faculty.addStudentToGroup('10', { name: 'Матвей', recordBookNumber: '612013002' });
+faculty.addStudentToGroup('10', { name: 'Евгений', recordBookNumber: '732013001' });
+faculty.addStudentToGroup('10', { name: 'Никита', recordBookNumber: '612013002' });
 faculty.addStudentToGroup('9', { name: 'Виктория', recordBookNumber: '712013003' });
 
 console.log(faculty.getGroup('10'));

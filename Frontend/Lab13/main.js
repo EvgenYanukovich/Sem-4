@@ -231,19 +231,114 @@ class Sudoku {
         this.displayInHtml(this.gameField);
     }
 
-    checkGame() {
-        let correct = true;
-        let filled = true;
+    checkRows() {
         let incorrectCells = [];
-        let correctFlashCells = [];
+
+        for (let row = 0; row < this.fieldSize; row++) {
+            let seen = new Set();
+            let incorrSeen = new Set();
+            for (let col = 0; col < this.fieldSize; col++) {
+                let num = this.gameField[row][col];
+                if (num !== null) {
+                    if (seen.has(num)) {
+                        incorrSeen.add(num);
+                    } else {
+                        seen.add(num);
+                    }
+                }
+            }
+
+            for (let col = 0; col < this.fieldSize; col++) {
+                let num = this.gameField[row][col];
+                if (incorrSeen.has(num)) {
+                    incorrectCells.push({ row, col });
+                }
+            }
+        }
+
+
+        return incorrectCells;
+    }
+
+    checkColumns() {
+        let incorrectCells = [];
+
+        for (let col = 0; col < this.fieldSize; col++) {
+            let seen = new Set();
+            let incorrSeen = new Set();
+            for (let row = 0; row < this.fieldSize; row++) {
+                let num = this.gameField[row][col];
+                if (num !== null) {
+                    if (seen.has(num)) {
+                        incorrSeen.add(num);
+                    } else {
+                        seen.add(num);
+                    }
+                }
+            }
+
+            for (let row = 0; row < this.fieldSize; row++) {
+                let num = this.gameField[row][col];
+                if (incorrSeen.has(num)) {
+                    incorrectCells.push({ row, col });
+                }
+            }
+        }
+
+        return incorrectCells;
+    }
+
+    checkBoxes() {
+        let incorrectCells = [];
+
+        for (let startRow = 0; startRow < this.fieldSize; startRow += this.boxSize) {
+            for (let startCol = 0; startCol < this.fieldSize; startCol += this.boxSize) {
+                let seen = new Set();
+                let incorrSeen = new Set();
+                for (let row = startRow; row < startRow + this.boxSize; row++) {
+                    for (let col = startCol; col < startCol + this.boxSize; col++) {
+                        let num = this.gameField[row][col];
+                        if (num !== null) {
+                            if (seen.has(num)) {
+                                incorrSeen.add(num);
+                            } else {
+                                seen.add(num);
+                            }
+                        }
+                    }
+                }
+
+                for (let row = startRow; row < startRow + this.boxSize; row++) {
+                    for (let col = startCol; col < startCol + this.boxSize; col++) {
+                        let num = this.gameField[row][col];
+                        if (incorrSeen.has(num)) {
+                            incorrectCells.push({ row, col });
+                        }
+                    }
+                }
+            }
+        }
+
+        return incorrectCells;
+    }
+
+    checkGame() {
+        let incorrectCells = [];
+
+        const rowsIncorrect = this.checkRows();
+        const colsIncorrect = this.checkColumns();
+        const boxesIncorrect = this.checkBoxes();
+
+        incorrectCells = [...rowsIncorrect, ...colsIncorrect, ...boxesIncorrect];
+
+        let correct = incorrectCells.length == 0;
+        let filled = true;
 
         this.gameField.forEach((row, rowIndex) => {
             row.forEach((cell, colIndex) => {
+                console.log(cell)
                 if (cell === null) {
                     filled = false;
-                } else if (cell !== this.fullField[rowIndex][colIndex]) {
-                    correct = false;
-                    incorrectCells.push({ row: rowIndex, col: colIndex });
                 }
             });
         });
@@ -262,12 +357,12 @@ class Sudoku {
                 }
             })).filter(cell => cell != null));
             setTimeout(() => {
-                this.showModal('./img/checkTrue.png', 'Результат проверки: верно!', 'Продолжить', this, 'hideModal');
+                this.showModal('./img/checkTrue.png', 'Результат проверки: Заполнено верно! Продолжайте заполнять судоку', 'Продолжить', this, 'hideModal');
             }, 1000);
         } else {
             this.flashCells('red', 1000, incorrectCells);
             setTimeout(() => {
-                this.showModal('./img/checkFalse.png', 'Результат проверки: неверно!', 'Продолжить', this, 'hideModal');
+                this.showModal('./img/checkFalse.png', 'Результат проверки: Заполнено неверно! Исправьте ошибки и продолжайте заполнять судоку', 'Продолжить', this, 'hideModal');
             }, 1000);
         }
     }

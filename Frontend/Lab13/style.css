@@ -116,7 +116,7 @@ button:hover {
 }
 
 .modal-image {
-    max-width: 100%;
+    max-width: 70%;
     display: block;
     margin: 0 auto;
 }
@@ -135,15 +135,24 @@ button:hover {
     background-color: #0056b3;
 }
 
+.highlight {
+    background-color: rgba(255, 0, 0, 0.3);
+    /* Красный полупрозрачный фон */
+    transition: background-color 0.5s;
+    /* Плавное изменение цвета фона */
+}
+
 @keyframes flash-red {
-    0% {
-        background-color: inherit;
-    }
-    50% {
-        background-color: #f8cecc;
-    }
+    0%,
+    50%,
     100% {
-        background-color: inherit;
+        background-color: rgba(255, 0, 0, 0.3);
+        /* Красный полупрозрачный фон */
+    }
+    25%,
+    75% {
+        background-color: transparent;
+        /* Прозрачный фон */
     }
 }
 
@@ -168,6 +177,9 @@ button:hover {
 }
 
 @media (max-width: 600px) {
+    .modal-image {
+        max-width: 100%;
+    }
     .table-cont {
         margin: 10px auto;
     }

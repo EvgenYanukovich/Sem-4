@@ -1,5 +1,5 @@
 //Задание 1
-const set = new Set ( [1, 2, 3, 4]);
+const set = new Set([1, 2, 3, 4]);
 console.log(set);
 
 //Задание 3
@@ -32,15 +32,15 @@ const person = {
     name: "Lydia"
 };
 
-Object.defineProperty(person, "age", {value: 21});
+Object.defineProperty(person, "age", { value: 21 });
 
 console.log(person);
 console.log(Object.keys(person));
 
 //Задание 7
 const a = {};
-const b = {key: "b"};
-const c = {key: "c"};
+const b = { key: "b" };
+const c = { key: "c" };
 
 a[b] = 123;
 a[c] = 456;
@@ -65,7 +65,7 @@ const value = {
     number: 10
 };
 
-const multiply = (x = {...value}) => {
+const multiply = (x = {...value }) => {
     console.log((x.number *= 2));
 };
 
