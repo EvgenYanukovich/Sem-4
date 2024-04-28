@@ -57,3 +57,6 @@ task1.toggleCompleted();
 
 console.log("Обновленные данные задачи 1:");
 console.log(task1);
+
+task2.title = 'Кушац'
+console.log(task2.title)

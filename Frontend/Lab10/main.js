@@ -1,5 +1,5 @@
 //Задание 1
-const set = new Set([1, 2, 3, 4]);
+const set = new Set([2, 2, 3, 4]);
 console.log(set);
 
 //Задание 3
@@ -32,7 +32,7 @@ const person = {
     name: "Lydia"
 };
 
-Object.defineProperty(person, "age", { value: 21 });
+Object.defineProperty(person, "age", { value: 21, enumerable: true });
 
 console.log(person);
 console.log(Object.keys(person));
